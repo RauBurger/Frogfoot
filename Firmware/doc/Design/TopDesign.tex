@@ -1,0 +1,104 @@
+\documentclass[12pt,parskip=full]{article}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage[left=1.0in,right=1.0in,top=0.5in,bottom=1.0in]{geometry}
+\geometry{letterpaper}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{soul}
+\usepackage{textcomp}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{apacite}
+\usepackage{tabu}
+\usepackage[svgnames]{xcolor}
+\usepackage{tikz}
+\usepackage[linktoc=all]{hyperref}
+\usepackage{cleveref}
+\usepackage{listings}
+\usepackage{setspace}
+\usepackage{parskip}
+\usepackage{array}
+\usepackage{apacite}
+\usepackage{natbib}
+\usepackage{multicol}
+\usepackage{subcaption}
+\usepackage{mathtools}
+\usepackage{tikz-uml}
+\usepackage{pdflscape}
+
+\begin{document}
+	\begin{landscape}
+		\begin{tikzpicture}
+			\begin{umlpackage}{Frogfoot}
+				\begin{umlpackage}[x=0,y=0]{Application}
+					\umlclass{CommandProcessor}{}{}
+					\umlclass[x=5]{StreamMarshal}{}{}
+					\umlclass[x=10]{PowerSupplyMarshal}{}{}
+					\umlclass[y=-2]{OscilloscopeMarshal}{}{}
+					\umlclass[x=5,y=-2]{VoltmeterMarhsal}{}{}
+					\umlclass[x=10,y=-2]{ARBMarshal}{}{}
+					\begin{umlpackage}[y=-5]{Tasks}
+					\end{umlpackage}
+				\end{umlpackage}
+
+				\begin{umlpackage}[x=16]{System}
+					\umlclass{RunModeController}{}{}
+					\umlclass[y=-2]{ResourceManager}{}{}
+				\end{umlpackage}
+
+				\begin{umlpackage}[x=0,y=-5]{Function}
+					\umlclass{PowerSupply}{}{}
+					\umlclass[x=4]{FunctionGenerator}{}{}
+					\umlclass[x=8]{Voltmeter}{}{}
+					\umlclass[y=-2]{Oscilloscope}{}{}
+					\umlclass[x=4,y=-2]{LogicAnalyzer}{}{}
+				\end{umlpackage}
+				
+				\begin{umlpackage}[x=11,y=-5]{Math}
+					\umlclass{FIR}{}{}
+					\umlclass[x=2]{IIR}{}{}
+				\end{umlpackage}
+
+				\begin{umlpackage}[x=0,y=-10]{Driver}
+					\umlclass{I2C}{}{}
+					\umlclass[x=2]{ADC}{}{}
+					\umlclass[x=4]{DAC}{}{}
+					\umlclass[x=6]{SPI}{}{}
+					\umlclass[y=-2]{PWM}{}{}
+					\umlclass[x=2,y=-2]{GPIO}{}{}
+					\umlclass[x=4,y=-2]{Decoder}{}{}
+					\umlclass[x=6,y=-2]{FlexIO}{}{}
+					\begin{umlpackage}[y=-4.4]{USB}
+					\end{umlpackage}
+					\umlclass[x=2,y=-4]{PMC}{}{}
+					\umlclass[x=4,y=-4]{SMC}{}{}
+				\end{umlpackage}
+			\end{umlpackage}
+		\end{tikzpicture}
+	\end{landscape}
+
+	\begin{tikzpicture}
+		\begin{umlpackage}{USB}
+			\umlclass{Controller}{}{}
+			\umlclass[x=3,y=-1]{Endpoint}{}{}
+			\umlassoc{Controller}{Endpoint}
+		\end{umlpackage}
+	\end{tikzpicture}
+
+	\begin{tikzpicture}
+		\begin{umlpackage}{Application}
+			\umlclass[type=interface]{InputMarshal}{}{}
+			\umlclass[y=-3]{CommandProcessor}{}{}
+			\umlclass[y=-6,type=interface]{OutputMarshal}{}{}
+			\umlassoc[mult=1..*]{CommandProcessor}{OutputMarshal}
+			\umlassoc{InputMarshal}{CommandProcessor}
+		\end{umlpackage}
+	\end{tikzpicture}
+\end{document}
